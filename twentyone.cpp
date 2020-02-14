@@ -1,13 +1,3 @@
-/*******************************************************************************
- * CS 103 Twenty-One (Blackjack) PA
- * Name: Isaiah Kim
- * USC email: isaiahki@usc.edu
- * Comments (you want us to know):
- *
- *
- ******************************************************************************/
-
-// Add other #includes if you need
 #include <iostream>
 #include <cstdlib>
 
