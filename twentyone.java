@@ -110,7 +110,9 @@ public static void main(String[] args) {
     int[] dhand = new int[9];
     int[] phand = new int[9];
 
-    boolean done = false; 
+    boolean done = false;
+    
+    Scanner sc = new Scanner(System.in);
 
     while (!done) {
         char decision;
@@ -137,7 +139,7 @@ public static void main(String[] args) {
 
     while (getBestScore(phand, phandsize) < 21) { //hit or stay
         System.out.println("Type 'h' to hit or 's' to stay: ");
-        cin>>decision; 
+        decision = sc.next().charAt(0);
         if (decision =='h') { // hit
             phand[phandsize] = cards[phandsize+2]; 
             phandsize++; 
@@ -201,7 +203,7 @@ public static void main(String[] args) {
         
     System.out.println();
     System.out.println("Play again?" + " " + "[y/n]"); 
-    cin >> decision; 
+    decision = sc.next().charAt(0);
     
     if (decision == 'y') { // play again
         done = false;
@@ -212,5 +214,6 @@ public static void main(String[] args) {
     }
 
     }
+    sc.close();
 }
 }
