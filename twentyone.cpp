@@ -135,32 +135,21 @@ int getBestScore(int hand[], int numCards) //get score
  */
 int main(int argc, char* argv[])
 {
-  //---------------------------------------
-  // Do not change this code -- Begin
-  //---------------------------------------
-  if(argc < 2){
-    cout << "Error - Please provide the seed value." << endl;
-    return 1;
-  }
-  int seed = atoi(argv[1]);
-  srand(seed);
+
 
   int cards[52];
   int dhand[9];
   int phand[9];
-  //---------------------------------------
-  // Do not change this code -- End
-  //---------------------------------------
+ -----------------------------------
 
    bool done = false;  
   
   while (!done) { 
   char decision; 
-  int dhandsize; 
-  int phandsize; 
+  int dhandsize = 2; 
+  int phandsize = 2; 
       
-      dhandsize = 2; //
-      phandsize = 2; 
+   
       
       for(int i=0; i<NUM_CARDS;i++){
   		cards[i]=i;
