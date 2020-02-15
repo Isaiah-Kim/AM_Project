@@ -14,7 +14,7 @@ public static int[] value = {2,3,4,5,6,7,8,9,10,10,10,10,11};
  * You must use the Fisher-Yates / Durstenfeld shuffle algorithm
  *  described in the assignment writeup.
  */
-public void shuffle(int cards[]) {
+public static void shuffle(int cards[]) {
     for (int i = 51; i>0; i--) {
         int temp; 
         int j = rand()%(i+1); 
@@ -30,7 +30,7 @@ public void shuffle(int cards[]) {
  *  Valid Types are: 2,3,4,5,6,7,8,9,10,J,Q,K,A
  *  Valid Suits are: H, D, C, S
  */
-public void printCard(int id) {
+public static void printCard(int id) {
     if (id >= 0 && id <= 12) {
         System.out.print(type[id%13] + "-" + "H"); 
    }
@@ -50,7 +50,7 @@ public void printCard(int id) {
  *  Should return 11 for an ACE and can then
  *  be adjusted externally based on the sum of the score.
  */
-public int cardValue(int id) {
+public static int cardValue(int id) {
     int num = id%13; 
     return value[num]; 
 }
@@ -60,7 +60,7 @@ public int cardValue(int id) {
  * then print a newline at the end.  
  * Should use printCard() to print out each card.
  */
-public void printHand(int hand[], int numCards) {
+public static void printHand(int hand[], int numCards) {
     for (int i = 0; i<numCards; i++){
         printCard(hand[i]);
         System.out.print(" "); 
@@ -73,7 +73,7 @@ public void printHand(int hand[], int numCards) {
  * ACES should be treated as 11s to make the highest possible hand
  *  and only being reduced to 1s as needed to avoid busting.
  */
-public int getBestScore(int hand[], int numCards) {
+public static int getBestScore(int hand[], int numCards) {
     int sum = 0;
   
   int numofaces = 0; 
@@ -136,12 +136,12 @@ public static void main(String[] args) {
     printHand(phand, phandsize);
 
     while (getBestScore(phand, phandsize) < 21) { //hit or stay
-        cout << "Type 'h' to hit or 's' to stay: "<<endl; 
+        System.out.println("Type 'h' to hit or 's' to stay: ");
         cin>>decision; 
         if (decision =='h') { // hit
             phand[phandsize] = cards[phandsize+2]; 
             phandsize++; 
-            cout << "Player: ";
+            System.out.print("Player: ");
             printHand(phand, phandsize);          
         }
         else //stay
@@ -151,9 +151,9 @@ public static void main(String[] args) {
     if (getBestScore(phand, phandsize) > 21) { //bust
 
         
-        cout<<"Player busts"<< endl; 
-        cout<<"Lose "<<getBestScore(phand, phandsize)
-            << " "<< getBestScore(dhand, dhandsize)<< endl; 
+        System.out.println("Player busts");
+        System.out.println("Lose " + getBestScore(phand, phandsize) +
+            " " + getBestScore(dhand, dhandsize));
     }
     
     if (getBestScore(phand, phandsize) <= 21) {
@@ -161,16 +161,15 @@ public static void main(String[] args) {
             dhand[dhandsize] = cards[phandsize+dhandsize]; 
             dhandsize++; 
         }
-        cout << "Dealer: ";
+        System.out.print("Dealer: ");
         printHand(dhand, dhandsize); 
-        
         
         if (getBestScore(dhand, dhandsize) > 21) {
            // cout<< "Dealer: ";
             //printHand(dhand, dhandsize); 
-            cout<<"Dealer busts" <<endl;
-            cout<<"Win "<<getBestScore(phand, phandsize)
-                <<" "<<getBestScore(dhand, dhandsize); 
+            System.out.println("Dealer busts");
+            System.out.print("Win " + getBestScore(phand, phandsize) +
+                " " + getBestScore(dhand, dhandsize)); 
         }
             
         else {
@@ -178,30 +177,30 @@ public static void main(String[] args) {
                 < getBestScore(dhand, dhandsize)) { //lost
                 //cout<<"Dealer: ";
                // printHand(dhand, dhandsize); 
-                cout<<"Lose "<<getBestScore(phand, phandsize)<< 
-                    " "<<getBestScore(dhand, dhandsize)<<endl;
+               System.out.println("Lose " + getBestScore(phand, phandsize) + 
+                    " " + getBestScore(dhand, dhandsize));
                 
             }
             else if(getBestScore(phand, phandsize) == 
                     getBestScore(dhand, dhandsize)) { // tie
                // cout<<"Dealer: ";
                // printHand(dhand, dhandsize); 
-                cout<<"Tie "<<getBestScore(phand, phandsize)
-                    << " "<<getBestScore(dhand, dhandsize)<<endl;
+               System.out.println("Tie " + getBestScore(phand, phandsize)
+                    + " " + getBestScore(dhand, dhandsize));
             }
             else {
                // cout<<"Dealer: ";
                // printHand(dhand, dhandsize);
-                cout<<"Win "<<getBestScore(phand, phandsize) // won
-                    << " "<<getBestScore(dhand, dhandsize)<<endl;
+               System.out.println("Win "+getBestScore(phand, phandsize) // won
+                    + " "+getBestScore(dhand, dhandsize));
             }
             
             
         }
     }
         
-    cout<<endl;
-    cout<<"Play again?"<<" "<<"[y/n]"<<endl; 
+    System.out.println();
+    System.out.println("Play again?" + " " + "[y/n]"); 
     cin >> decision; 
     
     if (decision == 'y') { // play again
