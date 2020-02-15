@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-
-
 public class twentyone {
 
 public static int NUM_CARDS = 52;
@@ -17,7 +15,8 @@ public static int[] value = {2,3,4,5,6,7,8,9,10,10,10,10,11};
 public static void shuffle(int cards[]) {
     for (int i = 51; i>0; i--) {
         int temp; 
-        int j = rand()%(i+1); 
+      //  int j = rand()%(i+1); 
+      int j = i;
         temp = cards[i];
         cards[i] = cards[j];
         cards[j] = temp; 
